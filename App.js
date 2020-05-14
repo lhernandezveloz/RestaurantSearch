@@ -1,19 +1,19 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
+import SearchScreen from './src/screens/searchScreen';
+import DetailsScreen from './src/screens/datailsScreen';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
-  );
-}
+const navigation = createStackNavigator({
+  Home : SearchScreen,
+  Details: DetailsScreen
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+},
+{
+  initialRouteName : 'Home',
+  defaultNavigationOptions : {
+    title : 'Restaurant Search'
+  }
 });
+
+export default createAppContainer(navigation);
+
